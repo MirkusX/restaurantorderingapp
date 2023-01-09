@@ -14,6 +14,7 @@ export const StyledImageDiv = styled.div`
   height: 10em;
   background-size: cover;
   background-position: 50%;
+  color: white;
 `;
 
 export const StyledItemDiv = styled.div`
@@ -38,4 +39,8 @@ export const StyledButton = styled.button`
   border: 1.5px solid #3c3c3c;
   background-color: #dedede;
   text-align: center;
+  flex-shrink: 0;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 `;
