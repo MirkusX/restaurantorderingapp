@@ -32,4 +32,10 @@ export const EmojiH2 = styled.h2`
 export const StyledButton = styled.button`
   font-size: 2em;
   border-radius: 50%;
+  width: 3.125em;
+  height: 3.125em;
+  padding: 0;
+  border: 1.5px solid #3c3c3c;
+  background-color: #dedede;
+  text-align: center;
 `;
