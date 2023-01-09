@@ -24,6 +24,7 @@ export const StyledItemDiv = styled.div`
 
 export const StyledInnerItemDiv = styled.div`
   width: 100%;
+  text-align: left;
 `;
 
 export const EmojiH2 = styled.h2`
