@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Smythe&display=swap");
+
 .App {
   text-align: center;
+  font-family: "Smythe", cursive;
 }
 
 .App-logo {

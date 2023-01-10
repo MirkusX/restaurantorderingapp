@@ -1,14 +1,30 @@
+import { useState } from "react";
 import {
   EmojiH2,
+  PriceH2,
   StyledButton,
+  StyledH2,
   StyledImageDiv,
   StyledInnerItemDiv,
   StyledItemDiv,
+  StyledOrderDiv,
+  StyledP,
   StyledSection,
+  StyledSpan,
 } from "../Components/StyledComponents";
 import { menuArray } from "./FrontpageFiles/FrontpageConts";
 
 export const Frontpage = () => {
+  const [display, setDisplay] = useState(false);
+  const [cart, setCart] = useState([]);
+  // let cart = [];
+
+  const addToCart = (name, price, emoji) => {
+    // cart.push({ name, price, emoji });
+    setCart([...cart, { name: name, price: price, emoji: emoji }]);
+    setDisplay(true);
+    console.log(display);
+  };
   return (
     <StyledSection>
       <StyledImageDiv>
@@ -21,15 +37,29 @@ export const Frontpage = () => {
             <StyledItemDiv id={item.id} key={index}>
               <EmojiH2>{item.emoji}</EmojiH2>
               <StyledInnerItemDiv>
-                <h2>{item.name}</h2>
-                <p>{item.ingredients}</p>
-                <h2>£{item.price}</h2>
+                <StyledH2>{item.name}</StyledH2>
+                <StyledP>{item.ingredients}</StyledP>
+                <StyledH2 price>£{item.price}</StyledH2>
               </StyledInnerItemDiv>
-              <StyledButton>+</StyledButton>
+              <StyledButton
+                onClick={() => addToCart(item.name, item.price, item.emoji)}
+              >
+                +
+              </StyledButton>
             </StyledItemDiv>
           );
         })}
       </div>
+      <StyledOrderDiv open={display}>
+        <h3>Your Order</h3>
+        {cart.map((item, index) => {
+          return (
+            <div key={index}>
+              <h3>{item.name}</h3>
+            </div>
+          );
+        })}
+      </StyledOrderDiv>
     </StyledSection>
   );
 };
