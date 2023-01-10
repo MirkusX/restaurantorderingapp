@@ -91,6 +91,7 @@ export const StyledH3 = styled.h3`
       return `
       color: #BBBBBB;
       font-size: 0.75rem;
+      cursor: pointer;
       `;
     }
   }}

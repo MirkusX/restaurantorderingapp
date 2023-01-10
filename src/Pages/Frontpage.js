@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   EmojiH2,
   StyledButton,
@@ -20,16 +20,21 @@ export const Frontpage = () => {
   const [cart, setCart] = useState([]);
   const sum = Object.values(cart).reduce((a, b) => a + b.price, 0);
 
-  const addToCart = (name, price, emoji) => {
-    setCart([...cart, { name: name, price: price, emoji: emoji }]);
+  const addToCart = (name, price) => {
+    setCart([...cart, { name: name, price: price }]);
     setDisplay(true);
-    console.log(display);
   };
 
   const removeCart = (index) => {
     const removeList = [...cart];
-    removeList.splice(1, index);
+    removeList.splice(index, 1);
+    setCart(removeList);
   };
+  useEffect(() => {
+    if (cart.length == 0) {
+      setDisplay(false);
+    }
+  }, [cart]);
   return (
     <StyledSection>
       <StyledImageDiv>
@@ -46,9 +51,7 @@ export const Frontpage = () => {
                 <StyledP>{item.ingredients}</StyledP>
                 <StyledH2 price>£{item.price}</StyledH2>
               </StyledInnerItemDiv>
-              <StyledButton
-                onClick={() => addToCart(item.name, item.price, item.emoji)}
-              >
+              <StyledButton onClick={() => addToCart(item.name, item.price)}>
                 +
               </StyledButton>
             </StyledItemDiv>
