@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import {
   EmojiH2,
   PaymentBackground,
@@ -15,26 +15,26 @@ import {
   StyledP,
   StyledSection,
 } from "../Components/StyledComponents";
+import { initialState, reducer } from "../Components/useReducer";
 import { menuArray } from "./FrontpageFiles/FrontpageConts";
 
 export const Frontpage = () => {
-  const [display, setDisplay] = useState(false);
-  const [show, setShow] = useState(false);
   const [cart, setCart] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const sum = Object.values(cart).reduce((a, b) => a + b.price, 0);
 
   const addToCart = (name, price) => {
     setCart([...cart, { name: name, price: price }]);
-    setDisplay(true);
+    dispatch({ type: "display1", payload: true });
   };
 
   const pay = () => {
-    setShow(true);
+    dispatch({ type: "display2" });
   };
 
   const payFinal = () => {
-    setShow(false);
+    dispatch({ type: "display2" });
   };
 
   const removeCart = (index) => {
@@ -44,7 +44,7 @@ export const Frontpage = () => {
   };
   useEffect(() => {
     if (cart.length == 0) {
-      setDisplay(false);
+      dispatch({ type: "display1", payload: false });
     }
   }, [cart]);
   return (
@@ -70,7 +70,7 @@ export const Frontpage = () => {
           );
         })}
       </div>
-      <StyledOrderDiv open={display}>
+      <StyledOrderDiv open={state.boolean1}>
         <h3>Your Order</h3>
         {cart.map((item, index) => {
           return (
@@ -93,7 +93,7 @@ export const Frontpage = () => {
           Complete Order
         </StyledCompleteButton>
       </StyledOrderDiv>
-      <PaymentBackground display={show}>
+      <PaymentBackground display={state.boolean2}>
         <PaymentWindow>
           <label for="name">Name</label>
           <input type="text" name="name" placeholder="Enter your name" />
