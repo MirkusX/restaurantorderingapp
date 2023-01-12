@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import { useEffect, useReducer, useState } from "react";
 import {
   EmojiH2,
@@ -23,12 +24,12 @@ export const Frontpage = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const sum = Object.values(cart).reduce((a, b) => a + b.price, 0);
-
   const addToCart = (name, price) => {
-    setCart([...cart, { name: name, price: price }]);
+    // setCart([...cart, { name: name, price: price }]);
+    dispatch({ type: "cart", payload: state.cart });
     dispatch({ type: "display1", payload: true });
   };
-
+  console.log(typeof state.cart);
   const pay = () => {
     dispatch({ type: "display2" });
   };
@@ -95,6 +96,7 @@ export const Frontpage = () => {
       </StyledOrderDiv>
       <PaymentBackground display={state.boolean2}>
         <PaymentWindow>
+          <h3>Total sum: £{sum}</h3>
           <label for="name">Name</label>
           <input type="text" name="name" placeholder="Enter your name" />
           <label for="cardNum">Card Number</label>
