@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import {
   EmojiH2,
+  PaymentBackground,
+  PaymentWindow,
   StyledButton,
   StyledCompleteButton,
   StyledH2,
@@ -17,12 +19,22 @@ import { menuArray } from "./FrontpageFiles/FrontpageConts";
 
 export const Frontpage = () => {
   const [display, setDisplay] = useState(false);
+  const [show, setShow] = useState(false);
   const [cart, setCart] = useState([]);
+
   const sum = Object.values(cart).reduce((a, b) => a + b.price, 0);
 
   const addToCart = (name, price) => {
     setCart([...cart, { name: name, price: price }]);
     setDisplay(true);
+  };
+
+  const pay = () => {
+    setShow(true);
+  };
+
+  const payFinal = () => {
+    setShow(false);
   };
 
   const removeCart = (index) => {
@@ -77,8 +89,23 @@ export const Frontpage = () => {
           <StyledH3 price>Total Price:</StyledH3>
           <StyledH3 price>£{sum}</StyledH3>
         </StyledOrderItem>
-        <StyledCompleteButton>Complete Order</StyledCompleteButton>
+        <StyledCompleteButton onClick={() => pay()}>
+          Complete Order
+        </StyledCompleteButton>
       </StyledOrderDiv>
+      <PaymentBackground display={show}>
+        <PaymentWindow>
+          <label for="name">Name</label>
+          <input type="text" name="name" placeholder="Enter your name" />
+          <label for="cardNum">Card Number</label>
+          <input type="number" name="cardNum" placeholder="Enter card number" />
+          <label for="cvv">CVV</label>
+          <input type="number" name="cvv" placeholder="Enter CVV" />
+          <StyledCompleteButton onClick={() => payFinal()}>
+            Pay
+          </StyledCompleteButton>
+        </PaymentWindow>
+      </PaymentBackground>
     </StyledSection>
   );
 };

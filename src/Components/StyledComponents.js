@@ -97,6 +97,30 @@ export const StyledH3 = styled.h3`
   }}
 `;
 
+export const PaymentBackground = styled.div`
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: fixed;
+  display: none;
+  ${(props) => {
+    if (props.display)
+      return `
+  display: block flex;
+  justify-content: center;
+  align-items: center;`;
+  }}
+`;
+
+export const PaymentWindow = styled.div`
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+`;
+
 export const StyledCompleteButton = styled.button`
   background-color: #16db99;
   border: none;
