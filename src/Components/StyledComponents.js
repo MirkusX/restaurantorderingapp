@@ -78,6 +78,13 @@ export const StyledOrderDiv = styled.div`
   }}
 `;
 
+export const GreenDiv = styled.div`
+  background-color: #ecfdf5;
+  padding: 1em;
+  margin-bottom: 1em;
+  color: #065f46;
+`;
+
 export const StyledH3 = styled.h3`
   margin: 0;
   ${(props) => {

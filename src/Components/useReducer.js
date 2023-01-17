@@ -6,7 +6,7 @@ export const initialState = [
     boolean2: false,
   },
   {
-    cart: [],
+    boolean3: false,
   },
 ];
 
@@ -16,7 +16,7 @@ export const reducer = (state, action) => {
       return { boolean1: (state.boolean1 = action.payload) };
     case "display2":
       return { boolean2: !state.boolean2 };
-    case "cart":
-      return { cart: (state.cart = action.payload) };
+    case "display3":
+      return { boolean3: (state.boolean3 = action.payload) };
   }
 };

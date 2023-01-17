@@ -2,6 +2,7 @@ import { type } from "@testing-library/user-event/dist/type";
 import { useEffect, useReducer, useState } from "react";
 import {
   EmojiH2,
+  GreenDiv,
   PaymentBackground,
   PaymentWindow,
   StyledButton,
@@ -25,17 +26,16 @@ export const Frontpage = () => {
 
   const sum = Object.values(cart).reduce((a, b) => a + b.price, 0);
   const addToCart = (name, price) => {
-    // setCart([...cart, { name: name, price: price }]);
-    dispatch({ type: "cart", payload: state.cart });
+    setCart([...cart, { name: name, price: price }]);
     dispatch({ type: "display1", payload: true });
   };
-  console.log(typeof state.cart);
   const pay = () => {
     dispatch({ type: "display2" });
   };
 
   const payFinal = () => {
     dispatch({ type: "display2" });
+    dispatch({ type: "display3", payload: true });
   };
 
   const removeCart = (index) => {
@@ -71,6 +71,11 @@ export const Frontpage = () => {
           );
         })}
       </div>
+      <StyledOrderDiv open={state.boolean3}>
+        <GreenDiv>
+          <p>Kokkk</p>
+        </GreenDiv>
+      </StyledOrderDiv>
       <StyledOrderDiv open={state.boolean1}>
         <h3>Your Order</h3>
         {cart.map((item, index) => {
@@ -86,6 +91,7 @@ export const Frontpage = () => {
             </StyledOrderItem>
           );
         })}
+
         <StyledOrderItem price>
           <StyledH3 price>Total Price:</StyledH3>
           <StyledH3 price>£{sum}</StyledH3>
