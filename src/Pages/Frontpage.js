@@ -6,6 +6,7 @@ import {
   PaymentWindow,
   StyledButton,
   StyledCompleteButton,
+  StyledForm,
   StyledH2,
   StyledH3,
   StyledImageDiv,
@@ -33,8 +34,8 @@ export const Frontpage = () => {
     dispatch({ type: "display2" });
   };
 
-  const payFinal = (event) => {
-    event.preventDefault();
+  const payFinal = (e) => {
+    e.preventDefault();
     dispatch({ type: "display2" });
     dispatch({ type: "display3", payload: true });
   };
@@ -93,12 +94,12 @@ export const Frontpage = () => {
           <StyledH3 price>Total Price:</StyledH3>
           <StyledH3 price>£{sum}</StyledH3>
         </StyledOrderItem>
-        <StyledCompleteButton onClick={() => pay()} value="Pay" />
+        <StyledCompleteButton onClick={() => pay()}>Pay</StyledCompleteButton>
       </StyledOrderDiv>
       <PaymentBackground display={state.boolean2}>
         <PaymentWindow>
           <h3>Total sum: £{sum}</h3>
-          <form>
+          <StyledForm onSubmit={payFinal}>
             <label for="name">Name</label>
             <input
               required="required"
@@ -122,12 +123,10 @@ export const Frontpage = () => {
               placeholder="Enter CVV"
             />
 
-            <StyledCompleteButton
-              type="submit"
-              onSubmit={(event) => payFinal(event)}
-              value="Complete Order"
-            />
-          </form>
+            <StyledCompleteButton type="submit">
+              Complete Order
+            </StyledCompleteButton>
+          </StyledForm>
         </PaymentWindow>
       </PaymentBackground>
       <StyledOrderDiv open={state.boolean3}>

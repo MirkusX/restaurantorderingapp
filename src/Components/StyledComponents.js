@@ -125,10 +125,17 @@ export const PaymentWindow = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30%;
+  width: 80%;
 `;
 
-export const StyledCompleteButton = styled.input`
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+`;
+
+export const StyledCompleteButton = styled.button`
   background-color: #16db99;
   border: none;
   width: 100%;
