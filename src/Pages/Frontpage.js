@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import { useEffect, useReducer, useState } from "react";
 import {
   EmojiH2,
@@ -21,6 +20,7 @@ import { initialState, reducer } from "../Components/useReducer";
 import { menuArray } from "./FrontpageFiles/FrontpageConts";
 
 export const Frontpage = () => {
+  const [name, setName] = useState("");
   const [cart, setCart] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -33,7 +33,8 @@ export const Frontpage = () => {
     dispatch({ type: "display2" });
   };
 
-  const payFinal = () => {
+  const payFinal = (event) => {
+    event.preventDefault();
     dispatch({ type: "display2" });
     dispatch({ type: "display3", payload: true });
   };
@@ -71,11 +72,7 @@ export const Frontpage = () => {
           );
         })}
       </div>
-      <StyledOrderDiv open={state.boolean3}>
-        <GreenDiv>
-          <p>Kokkk</p>
-        </GreenDiv>
-      </StyledOrderDiv>
+
       <StyledOrderDiv open={state.boolean1}>
         <h3>Your Order</h3>
         {cart.map((item, index) => {
@@ -96,24 +93,48 @@ export const Frontpage = () => {
           <StyledH3 price>Total Price:</StyledH3>
           <StyledH3 price>£{sum}</StyledH3>
         </StyledOrderItem>
-        <StyledCompleteButton onClick={() => pay()}>
-          Complete Order
-        </StyledCompleteButton>
+        <StyledCompleteButton onClick={() => pay()} value="Pay" />
       </StyledOrderDiv>
       <PaymentBackground display={state.boolean2}>
         <PaymentWindow>
           <h3>Total sum: £{sum}</h3>
-          <label for="name">Name</label>
-          <input type="text" name="name" placeholder="Enter your name" />
-          <label for="cardNum">Card Number</label>
-          <input type="number" name="cardNum" placeholder="Enter card number" />
-          <label for="cvv">CVV</label>
-          <input type="number" name="cvv" placeholder="Enter CVV" />
-          <StyledCompleteButton onClick={() => payFinal()}>
-            Pay
-          </StyledCompleteButton>
+          <form>
+            <label for="name">Name</label>
+            <input
+              required="required"
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              onInput={(e) => setName((name) => (name = e.target.value))}
+            />
+            <label for="cardNum">Card Number</label>
+            <input
+              required="required"
+              type="number"
+              name="cardNum"
+              placeholder="Enter card number"
+            />
+            <label for="cvv">CVV</label>
+            <input
+              required="required"
+              type="number"
+              name="cvv"
+              placeholder="Enter CVV"
+            />
+
+            <StyledCompleteButton
+              type="submit"
+              onSubmit={(event) => payFinal(event)}
+              value="Complete Order"
+            />
+          </form>
         </PaymentWindow>
       </PaymentBackground>
+      <StyledOrderDiv open={state.boolean3}>
+        <GreenDiv>
+          <p>Thanks, {name}. Your order is on it's way!</p>
+        </GreenDiv>
+      </StyledOrderDiv>
     </StyledSection>
   );
 };

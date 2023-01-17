@@ -128,7 +128,7 @@ export const PaymentWindow = styled.div`
   width: 30%;
 `;
 
-export const StyledCompleteButton = styled.button`
+export const StyledCompleteButton = styled.input`
   background-color: #16db99;
   border: none;
   width: 100%;
