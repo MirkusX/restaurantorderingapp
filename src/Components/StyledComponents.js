@@ -20,7 +20,10 @@ export const StyledImageDiv = styled.div`
   background-position: 50%;
   color: white;
   margin-bottom: 4.1875em;
-  width: 100%;
+  width: 40%;
+  @media (max-width: 811px) {
+    width: 100%;
+  }
 `;
 
 export const StyledItemDiv = styled.div`
@@ -70,7 +73,7 @@ export const StyledOrderDiv = styled.div`
       return `
   display: block;
   bottom: 0;
-  width: 50%;
+  width: 40%;
   background: white;
   @media (max-width: 811px) {
     width: 90%;
@@ -83,6 +86,10 @@ export const GreenDiv = styled.div`
   padding: 1em;
   margin-bottom: 1em;
   color: #065f46;
+`;
+
+export const GreenP = styled.p`
+  font-size: 2rem;
 `;
 
 export const StyledH3 = styled.h3`

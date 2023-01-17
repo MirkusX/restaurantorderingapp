@@ -2,6 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 import {
   EmojiH2,
   GreenDiv,
+  GreenP,
   PaymentBackground,
   PaymentWindow,
   StyledButton,
@@ -136,7 +137,7 @@ export const Frontpage = () => {
       </PaymentBackground>
       <StyledOrderDiv open={state.boolean3}>
         <GreenDiv>
-          <p>Thanks, {name}. Your order is on it's way!</p>
+          <GreenP>Thanks, {name}. Your order is on it's way!</GreenP>
         </GreenDiv>
       </StyledOrderDiv>
     </StyledSection>
