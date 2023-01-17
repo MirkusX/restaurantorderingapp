@@ -38,6 +38,9 @@ export const Frontpage = () => {
     e.preventDefault();
     dispatch({ type: "display2" });
     dispatch({ type: "display3", payload: true });
+    const timer = setTimeout(() => {
+      window.location.reload();
+    }, 3000);
   };
 
   const removeCart = (index) => {
@@ -45,6 +48,7 @@ export const Frontpage = () => {
     removeList.splice(index, 1);
     setCart(removeList);
   };
+
   useEffect(() => {
     if (cart.length == 0) {
       dispatch({ type: "display1", payload: false });
@@ -96,6 +100,7 @@ export const Frontpage = () => {
         </StyledOrderItem>
         <StyledCompleteButton onClick={() => pay()}>Pay</StyledCompleteButton>
       </StyledOrderDiv>
+
       <PaymentBackground display={state.boolean2}>
         <PaymentWindow>
           <h3>Total sum: £{sum}</h3>
