@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import burger from "../Images/burger.avif";
-
+//stylings
 export const StyledSection = styled.section`
   width: 50%;
   display: flex;

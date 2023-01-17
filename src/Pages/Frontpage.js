@@ -22,19 +22,24 @@ import { initialState, reducer } from "../Components/useReducer";
 import { menuArray } from "./FrontpageFiles/FrontpageConts";
 
 export const Frontpage = () => {
+  //usestate for name in entered in form
   const [name, setName] = useState("");
+  //usestate for cart
   const [cart, setCart] = useState([]);
+  //reducer import
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  //sums up cost of items in cart to be displayed in form
   const sum = Object.values(cart).reduce((a, b) => a + b.price, 0);
+  //adds item name and item price to cart array and displays cart on bottom of page
   const addToCart = (name, price) => {
     setCart([...cart, { name: name, price: price }]);
     dispatch({ type: "display1", payload: true });
   };
+  //hides cart and displays payment form
   const pay = () => {
     dispatch({ type: "display2" });
   };
-
+  //hides payment form and displays complete message, prevents page from refreshing immediately and rather refreshes it after 3 seconds
   const payFinal = (e) => {
     e.preventDefault();
     dispatch({ type: "display2" });
@@ -43,13 +48,13 @@ export const Frontpage = () => {
       window.location.reload();
     }, 3000);
   };
-
+  //removes item from cart
   const removeCart = (index) => {
     const removeList = [...cart];
     removeList.splice(index, 1);
     setCart(removeList);
   };
-
+  //if cart is empty it hides cart
   useEffect(() => {
     if (cart.length == 0) {
       dispatch({ type: "display1", payload: false });
@@ -62,6 +67,7 @@ export const Frontpage = () => {
         <p>Best burgers and pizzas in town</p>
       </StyledImageDiv>
       <div>
+        {/* displays menu items */}
         {menuArray.map((item, index) => {
           return (
             <StyledItemDiv id={item.id} key={index}>
@@ -81,6 +87,7 @@ export const Frontpage = () => {
 
       <StyledOrderDiv open={state.boolean1}>
         <h3>Your Order</h3>
+        {/* displays cart items */}
         {cart.map((item, index) => {
           return (
             <StyledOrderItem key={index}>

@@ -1,3 +1,4 @@
+//initial state for booleans used for hiding and displaying html elements
 export const initialState = [
   {
     boolean1: false,
@@ -9,7 +10,7 @@ export const initialState = [
     boolean3: false,
   },
 ];
-
+//reducer for hiding and displaying html elements
 export const reducer = (state, action) => {
   switch (action.type) {
     case "display1":
