@@ -2,7 +2,7 @@ import styled from "styled-components";
 import burger from "../Images/burger.avif";
 //stylings
 export const StyledSection = styled.section`
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,6 +121,8 @@ export const PaymentBackground = styled.div`
   ${(props) => {
     if (props.display)
       return `
+  // fall back cause chromium sucks
+  display: block;
   display: block flex;
   justify-content: center;
   align-items: center;`;
@@ -128,11 +130,17 @@ export const PaymentBackground = styled.div`
 `;
 
 export const PaymentWindow = styled.div`
+  //centering for chromium fallback
+  margin: 0 auto;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 40%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  @media (max-width: 811px) {
+    width: 80%;
+  }
 `;
 
 export const StyledForm = styled.form`
@@ -140,6 +148,7 @@ export const StyledForm = styled.form`
   flex-direction: column;
   align-items: center;
   gap: 1em;
+  width: 90%;
 `;
 
 export const StyledCompleteButton = styled.button`
@@ -157,6 +166,7 @@ export const StyledCompleteButton = styled.button`
 export const StyledOrderItem = styled.div`
   text-align: left;
   display: flex;
+  width: 100%;
   justify-content: space-between;
   ${(props) => {
     if (props.price)
@@ -178,4 +188,18 @@ export const StyledH2 = styled.h2`
 
 export const StyledP = styled.p`
   margin: 0 0 0.5em 0;
+`;
+
+export const StyledDiv = styled.div`
+  width: 40%;
+  @media (max-width: 811px) {
+    width: 80%;
+  }
+`;
+
+export const StyledInput = styled.input`
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.25rem;
+  padding: 1em;
 `;

@@ -7,11 +7,13 @@ import {
   PaymentWindow,
   StyledButton,
   StyledCompleteButton,
+  StyledDiv,
   StyledForm,
   StyledH2,
   StyledH3,
   StyledImageDiv,
   StyledInnerItemDiv,
+  StyledInput,
   StyledItemDiv,
   StyledOrderDiv,
   StyledOrderItem,
@@ -66,7 +68,7 @@ export const Frontpage = () => {
         <h1>Jimmy's Diner</h1>
         <p>Best burgers and pizzas in town</p>
       </StyledImageDiv>
-      <div>
+      <StyledDiv>
         {/* displays menu items */}
         {menuArray.map((item, index) => {
           return (
@@ -83,7 +85,7 @@ export const Frontpage = () => {
             </StyledItemDiv>
           );
         })}
-      </div>
+      </StyledDiv>
 
       <StyledOrderDiv open={state.boolean1}>
         <h3>Your Order</h3>
@@ -112,30 +114,27 @@ export const Frontpage = () => {
       <PaymentBackground display={state.boolean2}>
         <PaymentWindow>
           <h3>Total sum: £{sum}</h3>
+          <h3>Enter card details</h3>
           <StyledForm onSubmit={payFinal}>
-            <label for="name">Name</label>
-            <input
+            <StyledInput
               required="required"
               type="text"
               name="name"
               placeholder="Enter your name"
               onInput={(e) => setName((name) => (name = e.target.value))}
             />
-            <label for="cardNum">Card Number</label>
-            <input
+            <StyledInput
               required="required"
               type="number"
               name="cardNum"
               placeholder="Enter card number"
             />
-            <label for="cvv">CVV</label>
-            <input
+            <StyledInput
               required="required"
               type="number"
               name="cvv"
               placeholder="Enter CVV"
             />
-
             <StyledCompleteButton type="submit">
               Complete Order
             </StyledCompleteButton>
