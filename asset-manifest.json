@@ -1,17 +1,16 @@
 {
   "files": {
     "main.css": "/restaurantorderingapp/static/css/main.3baebd16.css",
-    "main.js": "/restaurantorderingapp/static/js/main.d471500f.js",
+    "main.js": "/restaurantorderingapp/static/js/main.5a31b0ea.js",
     "static/js/787.3fc298d3.chunk.js": "/restaurantorderingapp/static/js/787.3fc298d3.chunk.js",
     "static/media/burger.avif": "/restaurantorderingapp/static/media/burger.02f18afd8fe2ec180229.avif",
-    "static/media/logo.svg": "/restaurantorderingapp/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/restaurantorderingapp/index.html",
     "main.3baebd16.css.map": "/restaurantorderingapp/static/css/main.3baebd16.css.map",
-    "main.d471500f.js.map": "/restaurantorderingapp/static/js/main.d471500f.js.map",
+    "main.5a31b0ea.js.map": "/restaurantorderingapp/static/js/main.5a31b0ea.js.map",
     "787.3fc298d3.chunk.js.map": "/restaurantorderingapp/static/js/787.3fc298d3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3baebd16.css",
-    "static/js/main.d471500f.js"
+    "static/js/main.5a31b0ea.js"
   ]
 }
